@@ -1,6 +1,5 @@
 import { useState } from "react";
 import "./index.css";
-import { sort } from "semver";
 
 type Item = {
   id: number;
@@ -28,6 +27,10 @@ function App() {
     );
   }
 
+  function ClearList() {
+    setItems([]);
+  }
+
   return (
     <div className="app">
       <Logo />
@@ -36,6 +39,7 @@ function App() {
         items={items}
         onDeleteItem={deleteItems}
         onToggleItem={ToggleItemPack}
+        onClearList={ClearList}
       />
       <Stats item={items} />
     </div>
@@ -91,18 +95,21 @@ function PackingList({
   items,
   onDeleteItem,
   onToggleItem,
+  onClearList,
 }: {
   items: Array<Item>;
   onDeleteItem: (id: number) => void;
   onToggleItem: (id: number) => void;
+  onClearList: () => void;
 }) {
   const [sortBy, setSortBy] = useState("input");
 
-  let sortedItem: Array<Item>;
+  // let sortedItem: Array<Item>;
+  let sortedItem = items;
 
-  if (sortBy == "input") {
-    sortedItem = items;
-  }
+  // if (sortBy == "input") {
+  //   sortedItem = items;
+  // }
 
   if (sortBy == "description") {
     sortedItem = items
@@ -133,6 +140,7 @@ function PackingList({
           <option value="description">Set By Description Order</option>
           <option value="packed">Set By Packed Order</option>
         </select>
+        <button onClick={onClearList}>Clear</button>
       </div>
     </div>
   );
