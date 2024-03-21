@@ -1,17 +1,12 @@
 import { useState } from "react";
 import "./index.css";
 
-import Logo from "./Logo";
-import Form from "./Form";
-import PackingList from "./PackingList";
-import Stats from "./Stats";
+import Logo from "./Pages/Logo";
+import Form from "./Pages/Form";
+import PackingList from "./Pages/PackingList";
+import Stats from "./Pages/Stats";
 
-type Item = {
-  id: number;
-  description: string;
-  quantity: number;
-  packed: boolean;
-};
+import { Item } from "./type";
 
 function App() {
   const [items, setItems] = useState<Array<Item>>([]);

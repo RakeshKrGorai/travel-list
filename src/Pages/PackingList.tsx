@@ -1,11 +1,5 @@
 import { useState } from "react";
-
-type Item = {
-  id: number;
-  description: string;
-  quantity: number;
-  packed: boolean;
-};
+import { Item } from "../type";
 
 export default function PackingList({
   items,

@@ -1,9 +1,4 @@
-type Item = {
-  id: number;
-  description: string;
-  quantity: number;
-  packed: boolean;
-};
+import { Item } from "../type";
 
 export default function Stats({ item }: { item: Array<Item> }) {
   if (!item.length) {
